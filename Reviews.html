@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reviews - Psychic Mediumship</title>
+  <meta name="description" content="Psychic and mediumship readings with Steven Velazquez.">
+  <link rel="icon" href="images/witch_hat_icon_1.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="home-link" href="index.html" aria-label="Back to the cards">
+    <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 1v24M1 13h24" stroke="#000" stroke-width="1.6" fill="none"/></svg>
+  </a>
+  <main class="reviews">
+    <div class="slideshow" aria-roledescription="carousel" aria-label="Client testimonials">
+      <img src="images/E.png" alt="Client testimonial" width="1500" height="1500" class="active">
+      <img src="images/Ken.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/liz.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/KnowledgeIsPower.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/jay.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/sad.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/B.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/lisa.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/rachel.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/Untitled-1.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/ADG.png" alt="Client testimonial" width="1500" height="1500">
+      <img src="images/samantha.png" alt="Client testimonial" width="1500" height="1500">
+      <button class="slide-nav prev" aria-label="Previous testimonial"></button>
+      <button class="slide-nav next" aria-label="Next testimonial"></button>
+    </div>
+      <a class="button" href="https://app.acuityscheduling.com/schedule/8eac1cb9" target="_blank" rel="noopener">
+        <img src="images/BookASessionButton.png" alt="Book a Session" width="400" height="90">
+      </a>
+  </main>
+
+  <script>
+    // Fade slideshow: auto-advances every 9.5s, click left/right half to step.
+    (function () {
+      var slides = document.querySelectorAll('.slideshow img');
+      var i = 0, timer;
+      function show(n) {
+        slides[i].classList.remove('active');
+        i = (n + slides.length) % slides.length;
+        slides[i].classList.add('active');
+      }
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(function () { show(i + 1); }, 9500);
+      }
+      document.querySelector('.slide-nav.prev').onclick = function () { show(i - 1); restart(); };
+      document.querySelector('.slide-nav.next').onclick = function () { show(i + 1); restart(); };
+      restart();
+    })();
+  </script>
+</body>
+</html>

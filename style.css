@@ -1,0 +1,190 @@
+/* Psychic Mediumship — Steven Velazquez
+   Plain CSS, no build step. Migrated from Cargo, Nov 2026. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+h1 { margin: 0; font-size: inherit; line-height: 0; } /* headings are images */
+a { color: inherit; }
+b, strong { font-weight: 700; }
+
+/* ---------- "+" back-to-cards button (top right, every inner page) ---------- */
+.home-link {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 41px;
+  height: 41px;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+}
+.home-link svg { width: 26px; height: 26px; }
+.home-link:hover { opacity: .6; }
+
+/* ---------- Best Psychic Directory badge (home page) ---------- */
+.credential-badge {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+}
+.credential-badge img { width: 130px; }
+
+/* ---------- Home: the spread of cards ---------- */
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+.spread-wrap {
+  /* width of the spread; never taller than the screen */
+  width: min(27vw, calc((100vh - 80px) / 1.546));
+  container-type: inline-size;
+}
+.spread {
+  position: relative;
+  height: 154.6cqw;
+}
+.spread .card {
+  position: absolute;
+  display: block;
+}
+.spread a.card { transition: transform .25s ease; }
+.spread a.card:hover,
+.spread a.card:focus-visible { transform: translateY(-1.5cqw); }
+
+/* positions copied from the Cargo freeform gallery (as % of spread width) */
+.card-back-1 { left: 34.9721%; top: 17.906cqw; width: 51.5263%; z-index: 1; }
+.card-back-2 { left: 12.7348%; top: 3.0357cqw; width: 43.5792%; z-index: 2; }
+.card-psychic { left: 7.1706%; top: 0;         width: 51.9291%; z-index: 3; }
+.card-about   { left: 4.1495%; top: 77.775cqw; width: 52.8415%; z-index: 4; }
+.card-medium  { left: 44.9041%; top: 42.33cqw; width: 51.0095%; z-index: 5; }
+
+/* ---------- Service pages (Psychic / Mediumship) ---------- */
+.service {
+  min-height: 100vh;
+  width: 85%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 60px 0;
+}
+.service-card {
+  width: 50%;
+  margin: 0 auto;
+}
+.service-text {
+  max-width: 548px;
+}
+.service-header {
+  height: min(176px, 11.7vw);
+  width: auto;
+  margin-bottom: 22px;
+}
+.service-text p {
+  text-align: justify;
+  margin: 0 0 1.6em;
+}
+
+/* ---------- About ---------- */
+.about {
+  width: min(658px, 88%);
+  margin: 0 auto;
+  padding: 75px 0 60px;
+}
+.about-portrait {
+  width: min(454px, 100%);
+  margin: 0 auto 42px;
+}
+.about-header {
+  width: min(309px, 60%);
+  margin-bottom: 20px;
+}
+.about p {
+  text-align: justify;
+  margin: 0 0 1.5em;
+}
+
+/* ---------- Image buttons (Book a Session / Testimonials) ---------- */
+.button {
+  display: block;
+  margin: 40px auto 0;
+  width: fit-content;
+}
+.button img { width: 191px; }
+.button:hover { opacity: .85; }
+.about .button img { width: 204px; }
+.reviews .button img { width: 211px; }
+
+/* ---------- Reviews slideshow ---------- */
+.reviews {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0 40px;
+}
+.slideshow {
+  position: relative;
+  width: min(555px, 72vh, 90vw);
+  aspect-ratio: 1 / 1;
+}
+.slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+.slideshow img.active { opacity: 1; }
+.slide-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  z-index: 2;
+}
+.slide-nav.prev { left: 0;  cursor: w-resize; }
+.slide-nav.next { right: 0; cursor: e-resize; }
+.reviews .button { margin-top: 0; }
+
+/* ---------- Phones ---------- */
+@media (max-width: 760px) {
+  body { font-size: 14px; }
+  .home-link { top: 14px; right: 14px; }
+
+  .spread-wrap { width: min(78vw, calc((100vh - 80px) / 1.546)); }
+  .credential-badge img { width: 100px; }
+
+  .service {
+    width: 88%;
+    grid-template-columns: 1fr;
+    padding: 70px 0 50px;
+    gap: 36px;
+  }
+  .service-card { width: 62%; }
+  .service-header { height: auto; width: 100%; max-width: 270px; }
+  .button img { width: 100%; max-width: 225px; }
+}
